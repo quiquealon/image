@@ -99,14 +99,12 @@ private:
 
         if ( upper - lower > 1 ) {
 
-            // choose an arbitrary point and move it to the start
             // escoge un punto arbitrario and muevelo al inicio
             int i = (int)((double)rand() / RAND_MAX * (upper - lower - 1) ) + lower;
             std::swap( _items[lower], _items[i] );
 
             int median = ( upper + lower ) / 2;
 
-            // partitian around the median distance
             // particiona entorno a la distancia media
             std::nth_element(
                 _items.begin() + lower + 1,
@@ -114,7 +112,6 @@ private:
                 _items.begin() + upper,
                 DistanceComparator( _items[lower] ));
 
-            // what was the median?
             // cual es la mediana
 
             node->threshold = distance( _items[lower], _items[median] );

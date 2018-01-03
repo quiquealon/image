@@ -9,6 +9,8 @@
 #include <fstream>
 #include <string>
 #include <QElapsedTimer>
+#include <QFile>
+#include <QTextStream>
 
 
 
@@ -20,13 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->pushButton->setStyleSheet("background-color: red");
-
-    for(unsigned int num=1;num<100;num++){
-        ui->comboBox->addItem(QString::number(num));
-
-    }
-
-
 
 
 
@@ -83,7 +78,12 @@ MainWindow::MainWindow(QWidget *parent) :
 
    /************Timer*************/
 
-    qDebug()<<points.size();
+
+   ui->labelTotal->setText(QString::number(points.size()-1));
+   ui->spinBox->setMaximum(points.size()-1);
+
+   ui->spinResult->setMaximum(200);
+   ui->spinResult->setMinimum(1);
 
 }
 
@@ -143,16 +143,31 @@ void MainWindow::on_pushButton_clicked()
     int numSearch;
     int numResults;
 
-    numSearch=ui->lineEdit->text().toInt();
-    numResults=ui->comboBox->currentIndex()+2;
+
+    numSearch=ui->spinBox->value();
+    numResults=ui->spinResult->value();
+
 
     /************Timer*************/
     QElapsedTimer timer;
     timer.start();
 
-    tree.search(points[numSearch], numResults, &results, &distances );
 
-    ui->labelConsulta->setText(QString::number(timer.nsecsElapsed()));
+     tree.search(points[numSearch], numResults, &results, &distances );
+
+
+
+
+     ui->labelConsulta->setText(QString::number(timer.nsecsElapsed()));
+
+
+//      QString filename = "Data.dat";
+//      QFile file(filename);
+//          if (file.open(QIODevice::WriteOnly | QIODevice::Append)) {
+//              QTextStream stream(&file);
+//              stream << QString::number(timer.nsecsElapsed()/100)<<"\t"<<numResults << endl;
+//          }
+
 
      /************Timer*************/
 
