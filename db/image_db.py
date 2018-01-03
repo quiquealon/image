@@ -18,7 +18,7 @@ path_4 = "1299/"
 path_5 = "1307/"
 
 # define the path
-currentDirectory = pathlib.Path(path_5)
+currentDirectory = pathlib.Path(path_1)
 
 # define the pattern
 currentPattern = "*.JPEG"
@@ -56,12 +56,7 @@ def primary_colours(x):
                                 + str(cc[1][0]) + "," + str(cc[1][1]) + "," + str(cc[1][2])+","\
                                 + str(cc[2][0]) + "," + str(cc[2][1]) + "," + str(cc[2][2])+","\
                                 + str(cc[3][0]) + "," + str(cc[3][1]) + "," + str(cc[3][2])+","\
-				+ str(cc[4][0]) + "," + str(cc[4][1]) + "," + str(cc[4][2])+","\
-				+ str(cc[5][0]) + "," + str(cc[5][1]) + "," + str(cc[5][2])+","\
-				+ str(cc[6][0]) + "," + str(cc[6][1]) + "," + str(cc[6][2])+","\
-				+ str(cc[7][0]) + "," + str(cc[7][1]) + "," + str(cc[7][2])+","\
-				+ str(cc[8][0]) + "," + str(cc[8][1]) + "," + str(cc[8][2])+","\
-                                + str(cc[9][0]) + "," + str(cc[9][1]) + "," + str(cc[9][2]) + "\n")
+				+ str(cc[4][0]) + "," + str(cc[4][1]) + "," + str(cc[4][2]) + "\n")
     w.close()
     c+=1
     print(c)
