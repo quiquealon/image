@@ -10,11 +10,15 @@ from PIL import Image
 import pathlib
 
 
+
 path_1 = "1271/"
 path_2 = "1808/"
+path_3 = "9416/"
+path_4 = "1299/"
+path_5 = "1307/"
 
 # define the path
-currentDirectory = pathlib.Path(path_2)
+currentDirectory = pathlib.Path(path_5)
 
 # define the pattern
 currentPattern = "*.JPEG"
@@ -42,17 +46,22 @@ print("OK !")
 
 c = 0
 def primary_colours(x):
-    km = cluster.MiniBatchKMeans(5)
+    km = cluster.MiniBatchKMeans(10)
     km.fit(x)
     cc = km.cluster_centers_.copy()
     global c
     
     with open("imgs_features.csv", 'a') as w:
-        w.write(imgs[c] + "," + str(cc[0][0]) + "," + str(cc[0][1]) + "," + str(cc[0][2]) \
-                                + str(cc[1][0]) + "," + str(cc[1][1]) + "," + str(cc[1][2])\
-                                + str(cc[2][0]) + "," + str(cc[2][1]) + "," + str(cc[2][2])\
-                                + str(cc[3][0]) + "," + str(cc[3][1]) + "," + str(cc[3][2])\
-                                + str(cc[4][0]) + "," + str(cc[4][1]) + "," + str(cc[4][2]) + "\n")
+        w.write(imgs[c] + "," + str(cc[0][0]) + "," + str(cc[0][1]) + "," + str(cc[0][2])+"," \
+                                + str(cc[1][0]) + "," + str(cc[1][1]) + "," + str(cc[1][2])+","\
+                                + str(cc[2][0]) + "," + str(cc[2][1]) + "," + str(cc[2][2])+","\
+                                + str(cc[3][0]) + "," + str(cc[3][1]) + "," + str(cc[3][2])+","\
+				+ str(cc[4][0]) + "," + str(cc[4][1]) + "," + str(cc[4][2])+","\
+				+ str(cc[5][0]) + "," + str(cc[5][1]) + "," + str(cc[5][2])+","\
+				+ str(cc[6][0]) + "," + str(cc[6][1]) + "," + str(cc[6][2])+","\
+				+ str(cc[7][0]) + "," + str(cc[7][1]) + "," + str(cc[7][2])+","\
+				+ str(cc[8][0]) + "," + str(cc[8][1]) + "," + str(cc[8][2])+","\
+                                + str(cc[9][0]) + "," + str(cc[9][1]) + "," + str(cc[9][2]) + "\n")
     w.close()
     c+=1
     print(c)
